@@ -3,11 +3,17 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { TenantProvider } from './contexts/TenantContext';
+import { AuthProvider } from './contexts/AuthContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <TenantProvider> {/* TenantProvider resolves tenantId first */}
+      <AuthProvider>   {/* AuthProvider handles user session */}
+        <App />
+      </AuthProvider>
+    </TenantProvider>
   </React.StrictMode>
 );
 

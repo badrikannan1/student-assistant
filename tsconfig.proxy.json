@@ -1,0 +1,13 @@
+// tsconfig.proxy.json
+{
+  "extends": "./tsconfig.json", // Inherit common settings from your main tsconfig
+  "compilerOptions": {
+    // Override the module system for Node.js execution
+    "module": "commonjs",
+    // Ensure esModuleInterop is true for better import compatibility
+    "esModuleInterop": true,
+    // You might want a separate output directory if you compile this file
+    "outDir": "./dist-proxy"
+  },
+  "include": ["src/proxy-server.ts"] // Only include the proxy server file
+}
