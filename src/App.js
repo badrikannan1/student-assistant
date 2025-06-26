@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
-import { Home, Calendar, BookOpen, DollarSign, BrainCircuit, User, Info, Send, CalendarPlus, Mic } from 'lucide-react';
+import { Home, Calendar, BookOpen, DollarSign, BrainCircuit, User, Info, Send, CalendarPlus, Mic, Sun, Moon } from 'lucide-react';
 import { useTenant } from './contexts/TenantContext';
 import { useAuth } from './contexts/AuthContext'; 
 import axios from 'axios';
 import { getTenantSisConfiguration, SisService } from './sis/services/schedule.service';
 import LoginPage from './components/LoginPage';
+import ThemeToggleButton from './components/ThemeToggleButton'; // Import the new component
 
 // --- Dynamic Content URL Generation ---
 const AZURE_STORAGE_BASE_URL = 'https://ststudentassistantsdb01.blob.core.windows.net';
@@ -149,12 +150,15 @@ export default function App() {
     }
 
     return (
-        <div className="bg-slate-100 dark:bg-slate-900 min-h-screen font-sans text-slate-800 dark:text-slate-200 flex flex-col">
+        <div className="bg-slate-100 dark:bg-dark-background min-h-screen font-sans text-slate-800 dark:text-dark-foreground flex flex-col">
             <div className="container mx-auto p-4 max-w-7xl flex-grow flex flex-col">
                 <header className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 pb-4 border-b border-slate-300 dark:border-slate-700">
-                    <div>
+                    <div className="flex-1">
                         <h1 className="text-3xl font-bold text-slate-900 dark:text-white">{headerTenantName ? `${headerTenantName} Student Assistant` : 'Student Assistant'}</h1>
                         <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">Your personal AI agent for academic success.</p>
+                    </div>
+                    <div className="mt-4 sm:mt-0">
+                        <ThemeToggleButton />
                     </div>
                 </header>
                 <div className="flex flex-col lg:flex-row gap-6 flex-grow">

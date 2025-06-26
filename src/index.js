@@ -5,15 +5,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { TenantProvider } from './contexts/TenantContext';
 import { AuthProvider } from './contexts/AuthContext';
+import { ThemeProvider } from './contexts/ThemeContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <TenantProvider> {/* TenantProvider resolves tenantId first */}
-      <AuthProvider>   {/* AuthProvider handles user session */}
-        <App />
-      </AuthProvider>
-    </TenantProvider>
+    <ThemeProvider>
+      <TenantProvider> {/* TenantProvider resolves tenantId first */}
+        <AuthProvider>   {/* AuthProvider handles user session */}
+          <App />
+        </AuthProvider>
+      </TenantProvider>
+    </ThemeProvider>
   </React.StrictMode>
 );
 
